@@ -30,16 +30,22 @@ public class CustomerRepository : ICostumerRepository
             .FirstAsync();
     }
 
-    public Task<List<Customer>> GetByNameAsync(string firstName)
+    public Task<List<Customer>> GetByNameAsync(string name)
     {
         return _dbContext.Set<Customer>()
             .AsNoTracking()
-            .Where(customer => customer.FirstName.Contains(firstName))
+            .Where(customer => customer.FirstName.Contains(name) || customer.LastName.Contains(name))
+            .Where(customer => customer.ID >= 0) // Ao invés de usar AND
             .ToListAsync();
     }
 
-    public Task<IEnumerable<Customer>> ListAsync(int page, int pageSize)
+    public Task<List<Customer>> ListAllCustomersAsync(int page = 0, int pageSize = 100)
     {
-        throw new NotImplementedException();
+        return _dbContext.Set<Customer>()
+            .AsNoTracking()
+            .OrderBy(customer => customer.ID)
+            .Skip(pageSize * (page - 1))
+            .Take(pageSize)
+            .ToListAsync();
     }
 }

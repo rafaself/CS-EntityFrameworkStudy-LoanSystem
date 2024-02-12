@@ -7,5 +7,5 @@ public interface ICostumerRepository
     void Create(Customer customer, Address address);
     Task<Customer> GetByIdAsync(int id);
     Task<List<Customer>> GetByNameAsync(string firstName);
-    Task<IEnumerable<Customer>> ListAsync(int page, int pageSize);
+    Task<List<Customer>> ListAllCustomersAsync(int page, int pageSize);
 }

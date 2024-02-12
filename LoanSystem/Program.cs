@@ -19,6 +19,7 @@ do
     Console.WriteLine("2 - Adicionar livro");
     Console.WriteLine("3 - Buscar cliente pelo ID");
     Console.WriteLine("4 - Buscar cliente pelo nome");
+    Console.WriteLine("5 - Listar todos os clientes");
     Console.WriteLine("0 - Sair do menu");
 
     Console.Write("\nDigite uma opção: ");
@@ -38,6 +39,9 @@ do
             break;     
         case 4:
             await GetCustomerByName.Execute(contextOptions);
+            break;     
+        case 5:
+            await ListAllCustomers.Execute(contextOptions);
             break;
     }
 
