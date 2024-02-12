@@ -12,5 +12,8 @@ internal class LoanConfigutarion : IEntityTypeConfiguration<Loan>
         builder.HasOne<Customer>(loan => loan.Customer)
             .WithMany(customer => customer.Loans)
             .HasForeignKey(loan => loan.CustomerId);
+
+        builder.HasMany<LoanBook>(loan => loan.LoansBooks)
+            .WithOne(loanBook => loanBook.Loan);
     }
 }

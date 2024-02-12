@@ -8,5 +8,6 @@ public class Loan
     public DateTime StartDate {  get; set; }
     public int CustomerId { get; set; }
     public Customer? Customer { get; set; }
+    public ICollection<LoanBook>? LoansBooks { get; set; }
 
 }

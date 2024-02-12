@@ -13,6 +13,7 @@ internal class CustomDbContext : DbContext
     private DbSet<Book>? Books { get; set; }
     private DbSet<Customer>? Customers { get; set; }
     private DbSet<Address>? Addresses { get; set; }
+    private DbSet<LoanBook>? LoansBooks { get; set; }
 
     public CustomDbContext()
     {
