@@ -3,20 +3,20 @@ using LoanSystem.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace LoanSystem.UseCases;
+namespace LoanSystem.UseCases.Customers;
 
 public static class CreateCustomer
 {
     public static async Task Execute(DbContextOptions<CustomDbContext> options)
     {
-        Console.WriteLine("Digite o nome: ");
+        Console.Write("Digite o nome: ");
         var firstName = Console.ReadLine() ?? throw new InvalidOperationException("Can't be null");
 
 
-        Console.WriteLine("Digite o sobrenome: ");
+        Console.Write("Digite o sobrenome: ");
         var lastName = Console.ReadLine() ?? throw new InvalidOperationException("Can't be null");
 
-        Console.WriteLine("Digite o nome da rua: ");
+        Console.Write("Digite o nome da rua: ");
         var fullAddress = Console.ReadLine() ?? throw new InvalidOperationException("Can't be null");
 
         // Criando uma instância do contexto do banco de dados usando as opções de configuração especificadas

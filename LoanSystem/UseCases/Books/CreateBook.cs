@@ -2,13 +2,13 @@
 using LoanSystem.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace LoanSystem.UseCases;
+namespace LoanSystem.UseCases.Books;
 
 public static class CreateBook
 {
     public static async Task Execute(DbContextOptions<CustomDbContext> options)
     {
-        Console.WriteLine("Digite o nome do livro: ");
+        Console.Write("Digite o nome do livro: ");
         var bookTitle = Console.ReadLine() ?? throw new InvalidOperationException("Can't be null!");
 
         await using var context = new CustomDbContext(options);
@@ -17,7 +17,7 @@ public static class CreateBook
 
         var bookToBeCreated = new Book
         {
-            Title = "O meu livro",
+            Title = bookTitle,
             IsAvailable = true
         };
 
