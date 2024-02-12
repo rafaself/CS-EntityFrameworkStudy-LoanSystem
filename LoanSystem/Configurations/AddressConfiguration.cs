@@ -11,6 +11,5 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder.HasOne<Customer>(address => address.Customer)
             .WithOne(customer => customer.Address)
             .HasForeignKey<Address>(address => address.CustomerID);
-
     }
 }

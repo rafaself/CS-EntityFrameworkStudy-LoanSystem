@@ -13,6 +13,5 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 
         builder.HasMany<Loan>(customer => customer.Loans)
             .WithOne(loans => loans.Customer);
-
     }
 }
