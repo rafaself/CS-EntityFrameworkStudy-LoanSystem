@@ -1,5 +1,6 @@
 ﻿using LoanSystem.Models;
 using LoanSystem.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace LoanSystem.Repositories;
 
@@ -21,12 +22,20 @@ public class CustomerRepository : ICostumerRepository
 
     public Task<Customer> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.Set<Customer>()
+            .AsNoTracking()
+            .Where(customer => customer.ID == id)
+            .Include(customer => customer.Address)
+            //.ThenInclude(...) para caso tenha outra propriedade dentro de Address
+            .FirstAsync();
     }
 
-    public Task<Customer> GetByNameAsync(string firstName)
+    public Task<List<Customer>> GetByNameAsync(string firstName)
     {
-        throw new NotImplementedException();
+        return _dbContext.Set<Customer>()
+            .AsNoTracking()
+            .Where(customer => customer.FirstName.Contains(firstName))
+            .ToListAsync();
     }
 
     public Task<IEnumerable<Customer>> ListAsync(int page, int pageSize)

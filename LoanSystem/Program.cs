@@ -17,6 +17,8 @@ do
     Console.WriteLine("-- Gerenciamento da Biblioteca --");
     Console.WriteLine("1 - Adicionar cliente");
     Console.WriteLine("2 - Adicionar livro");
+    Console.WriteLine("3 - Buscar cliente pelo ID");
+    Console.WriteLine("4 - Buscar cliente pelo nome");
     Console.WriteLine("0 - Sair do menu");
 
     Console.Write("\nDigite uma opção: ");
@@ -26,10 +28,19 @@ do
     switch (choice)
     {
         case 1:
-            CreateCustomer.Execute(contextOptions);
+            await CreateCustomer.Execute(contextOptions);
             break;
         case 2:
-            CreateBook.Execute(contextOptions);
+            await CreateBook.Execute(contextOptions);
+            break;
+        case 3:
+            await GetCustomerById.Execute(contextOptions);
+            break;     
+        case 4:
+            await GetCustomerByName.Execute(contextOptions);
             break;
     }
+
+    Console.WriteLine("Operação executada!\n");
+
 } while (choice != 0);
