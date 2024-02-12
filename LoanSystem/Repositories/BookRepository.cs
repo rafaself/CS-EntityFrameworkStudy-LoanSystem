@@ -5,7 +5,7 @@ namespace LoanSystem.Repositories;
 
 internal class BookRepository : RepositoryBase<Book>, IBookRepository
 {
-    protected BookRepository(CustomDbContext context) : base(context)
+    public BookRepository(CustomDbContext context) : base(context)
     {
     }
 }

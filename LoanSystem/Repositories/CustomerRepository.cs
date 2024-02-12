@@ -17,6 +17,5 @@ public class CustomerRepository : ICostumerRepository
     {
         _dbContext.Add(customer);
         _dbContext.Add(address);
-
     }
 }
