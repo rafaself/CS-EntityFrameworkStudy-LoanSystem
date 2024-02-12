@@ -4,5 +4,5 @@ namespace LoanSystem.Repositories.Interfaces;
 
 public interface ICostumerRepository  
 {
-    void Create(Customer customer);
+    void Create(Customer customer, Address address);
 }

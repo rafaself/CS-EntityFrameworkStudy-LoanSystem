@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace LoanSystem;
 
-internal class CustomDbContext : DbContext
+public class CustomDbContext : DbContext
 {
 
     // Vai criar a tabela Loans que vai se referenciada pela estrutura da classe Loan

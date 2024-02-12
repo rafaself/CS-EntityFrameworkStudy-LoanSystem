@@ -3,7 +3,7 @@ using LoanSystem.Repositories.Interfaces;
 
 namespace LoanSystem.Repositories;
 
-internal class CustomerRepository : ICostumerRepository
+public class CustomerRepository : ICostumerRepository
 {
 
     private CustomDbContext _dbContext;
@@ -13,8 +13,10 @@ internal class CustomerRepository : ICostumerRepository
         _dbContext = context;
     }
 
-    public void Create(Customer customer)
+    public void Create(Customer customer, Address address)
     {
-        _dbContext.Add(customer);   
+        _dbContext.Add(customer);
+        _dbContext.Add(address);
+
     }
 }
