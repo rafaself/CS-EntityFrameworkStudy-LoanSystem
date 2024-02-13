@@ -24,7 +24,7 @@ public class CustomerRepository : ICostumerRepository
     {
         return _dbContext.Set<Customer>()
             .AsNoTracking()
-            .Where(customer => customer.ID == id)
+            .Where(customer => customer.Id == id)
             .Include(customer => customer.Address)
             //.ThenInclude(...) para caso tenha outra propriedade dentro de Address
             .FirstAsync();
@@ -35,7 +35,7 @@ public class CustomerRepository : ICostumerRepository
         return _dbContext.Set<Customer>()
             .AsNoTracking()
             .Where(customer => customer.FirstName.Contains(name) || customer.LastName.Contains(name))
-            .Where(customer => customer.ID >= 0) // Ao invés de usar AND
+            .Where(customer => customer.Id >= 0) // Ao invés de usar AND
             .ToListAsync();
     }
 
@@ -44,7 +44,7 @@ public class CustomerRepository : ICostumerRepository
 
         var customersSet = _dbContext.Set<Customer>()
             .AsNoTracking()
-            .OrderBy(customer => customer.ID);
+            .OrderBy(customer => customer.Id);
 
         var customersCount = await customersSet
             .CountAsync();

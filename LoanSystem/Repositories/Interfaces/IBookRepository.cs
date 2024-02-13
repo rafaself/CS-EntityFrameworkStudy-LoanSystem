@@ -2,6 +2,6 @@
 
 namespace LoanSystem.Repositories.Interfaces;
 
-internal interface IBookRepository:IRepositoryBase<Book>
+public interface IBookRepository:IRepositoryBase<Book>
 {
 }

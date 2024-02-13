@@ -2,7 +2,7 @@
 
 namespace LoanSystem.Repositories.Interfaces;
 
-internal interface IAddressRepository : IRepositoryBase<Book>
+public interface IAddressRepository : IRepositoryBase<Book>
 {
 
 }

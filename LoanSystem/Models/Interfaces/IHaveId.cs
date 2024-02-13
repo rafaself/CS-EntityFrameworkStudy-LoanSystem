@@ -1,6 +1,6 @@
 ﻿namespace LoanSystem.Models.Interfaces;
 
-internal interface IHaveId
+public interface IHaveId
 {
-    int Id { get; }
+    public int Id { get; }
 }

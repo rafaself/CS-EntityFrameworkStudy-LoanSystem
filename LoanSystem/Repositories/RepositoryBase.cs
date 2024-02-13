@@ -1,10 +1,11 @@
 ﻿
+using LoanSystem.Models.Interfaces;
 using LoanSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace LoanSystem.Repositories;
 
-public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
+public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class, IHaveId
 {
 
     protected CustomDbContext Context;
@@ -24,7 +25,8 @@ public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : 
     {
         return Context.Set<TEntity>()
             .AsNoTracking()
-            .Where(content => content.Id)
+            .Where(content => content.Id == id)
+            .FirstAsync();
     }
 
 }

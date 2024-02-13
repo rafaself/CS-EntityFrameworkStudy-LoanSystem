@@ -25,11 +25,13 @@ do
     Console.WriteLine("3 - Buscar cliente pelo ID");
     Console.WriteLine("4 - Buscar cliente pelo nome");
     Console.WriteLine("5 - Listar todos os clientes");
+    Console.WriteLine("6 - Buscar livro pelo ID");
     Console.WriteLine("0 - Sair do menu");
 
     Console.Write("\nDigite uma opção: ");
     var tempChoice = Console.ReadLine() ?? throw new InvalidOperationException("Can't be null!");
     choice = int.Parse(tempChoice);
+    Console.WriteLine();
 
     switch (choice)
     {
@@ -47,6 +49,9 @@ do
             break;     
         case 5:
             await ListAllCustomers.Execute(contextOptions);
+            break; 
+        case 6:
+            await GetBookById.Execute(contextOptions);
             break;
     }
 
