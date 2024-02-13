@@ -13,8 +13,22 @@ public class LoanRepository : ILoanRepository
         _customDbContext = customDbContext;
     }
 
-    public void Create(Loan loan, IEnumerable<int> booksId)
+    public async void Create(Loan loan, int customerId, IEnumerable<int> booksIds)
     {
-        throw new NotImplementedException();
+        loan.CustomerId = customerId;
+
+        foreach(var bookId in booksIds)
+        {
+            var loanBook = new LoanBook
+            {
+                Loan = loan,
+                BookId = bookId
+            };
+
+            _customDbContext.Add(loanBook);
+        }
+
+        await _customDbContext.SaveChangesAsync();
+
     }
 }

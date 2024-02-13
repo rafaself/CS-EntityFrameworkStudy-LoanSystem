@@ -1,6 +1,7 @@
 ﻿using LoanSystem;
 using LoanSystem.UseCases.Books;
 using LoanSystem.UseCases.Customers;
+using LoanSystem.UseCases.Loans;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -26,6 +27,7 @@ do
     Console.WriteLine("4 - Buscar cliente pelo nome");
     Console.WriteLine("5 - Listar todos os clientes");
     Console.WriteLine("6 - Buscar livro pelo ID");
+    Console.WriteLine("7 - Adicionar Empréstimo");
     Console.WriteLine("0 - Sair do menu");
 
     Console.Write("\nDigite uma opção: ");
@@ -52,6 +54,9 @@ do
             break; 
         case 6:
             await GetBookById.Execute(contextOptions);
+            break;        
+        case 7:
+            await CreateLoan.Execute(contextOptions);
             break;
     }
 

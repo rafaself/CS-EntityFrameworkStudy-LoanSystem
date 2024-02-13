@@ -18,11 +18,26 @@ public class CreateLoan
 
         var loan = new Loan
         {
-            CustomerId = customerId,
             Fee = .3m,
             StartDate = DateTime.UtcNow,
             ReturnDate = DateTime.UtcNow.AddDays(7)
         };
+
+        int bookId;
+        var booksId = new List<int>();
+        do
+        {
+            Console.Write("Digite o ID do livro ou 0 para sair: ");
+            var bookIdTemp = Console.ReadLine() ?? throw new InvalidOperationException("Can't be null!");
+            bookId = int.Parse(bookIdTemp);
+            if (bookId > 0)
+            {
+                booksId.Add(bookId);
+            }
+
+        } while (bookId > 0);
+
+        repository.Create(loan, customerId, booksId);
 
     }
 }
