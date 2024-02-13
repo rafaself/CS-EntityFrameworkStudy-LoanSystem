@@ -24,7 +24,8 @@ public class CreateLoan
         };
 
         int bookId;
-        var booksId = new List<int>();
+        var booksIds = new List<int>();
+
         do
         {
             Console.Write("Digite o ID do livro ou 0 para sair: ");
@@ -32,12 +33,12 @@ public class CreateLoan
             bookId = int.Parse(bookIdTemp);
             if (bookId > 0)
             {
-                booksId.Add(bookId);
+                booksIds.Add(bookId);
             }
 
         } while (bookId > 0);
 
-        repository.Create(loan, customerId, booksId);
+        await repository.Create(loan, customerId, booksIds);
 
     }
 }

@@ -1,19 +1,20 @@
 ﻿using LoanSystem.Models;
 using LoanSystem.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace LoanSystem.Repositories;
 
 public class LoanRepository : ILoanRepository
 {
 
-    CustomDbContext _customDbContext;
+    CustomDbContext _dbContext;
 
     public LoanRepository(CustomDbContext customDbContext)
     {
-        _customDbContext = customDbContext;
+        _dbContext = customDbContext;
     }
 
-    public async void Create(Loan loan, int customerId, IEnumerable<int> booksIds)
+    public async Task Create(Loan loan, int customerId, IEnumerable<int> booksIds)
     {
         loan.CustomerId = customerId;
 
@@ -25,10 +26,10 @@ public class LoanRepository : ILoanRepository
                 BookId = bookId
             };
 
-            _customDbContext.Add(loanBook);
+            _dbContext.Add(loanBook);
         }
 
-        await _customDbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync();
 
     }
 }
