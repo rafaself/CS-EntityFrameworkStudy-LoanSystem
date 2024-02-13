@@ -1,8 +1,10 @@
-﻿namespace LoanSystem.Models;
+﻿using LoanSystem.Models.Interfaces;
 
-public class Address
+namespace LoanSystem.Models;
+
+public class Address : IHaveId
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string FullAddress { get; set; } = string.Empty;
     public AddressType Type { get; set; }
     public Customer? Customer { get; set; }

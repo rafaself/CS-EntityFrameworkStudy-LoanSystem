@@ -1,6 +1,8 @@
-﻿namespace LoanSystem.Models;
+﻿using LoanSystem.Models.Interfaces;
 
-public class Book
+namespace LoanSystem.Models;
+
+public class Book : IHaveId
 {
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;

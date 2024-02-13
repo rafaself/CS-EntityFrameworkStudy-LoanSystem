@@ -1,8 +1,10 @@
-﻿namespace LoanSystem.Models;
+﻿using LoanSystem.Models.Interfaces;
 
-public class Loan
+namespace LoanSystem.Models;
+
+public class Loan : IHaveId
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public decimal Fee { get; set; }
     public DateTime ReturnDate { get; set; }
     public DateTime StartDate {  get; set; }
