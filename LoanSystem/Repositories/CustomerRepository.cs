@@ -39,11 +39,19 @@ public class CustomerRepository : ICostumerRepository
             .ToListAsync();
     }
 
-    public Task<List<Customer>> ListAllCustomersAsync(int page = 0, int pageSize = 100)
+    public async Task<List<Customer>> ListAllCustomersAsync(int page = 0, int pageSize = 100)
     {
-        return _dbContext.Set<Customer>()
+
+        var customersSet = _dbContext.Set<Customer>()
             .AsNoTracking()
-            .OrderBy(customer => customer.ID)
+            .OrderBy(customer => customer.ID);
+
+        var customersCount = await customersSet
+            .CountAsync();
+
+        if (customersCount == 0) throw new InvalidOperationException("No customers founded.");
+
+        return await customersSet
             .Skip(pageSize * (page - 1))
             .Take(pageSize)
             .ToListAsync();

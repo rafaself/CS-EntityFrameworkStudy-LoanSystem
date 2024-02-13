@@ -12,6 +12,11 @@ var contextOptions = new DbContextOptionsBuilder<CustomDbContext>()
 
 int choice;
 
+// #TODO
+// Validar paginação, não pode ser negativo ou 0
+// Organizar melhor o que der no código
+// Implementar testes
+
 do
 {
     Console.WriteLine("-- Gerenciamento da Biblioteca --");
